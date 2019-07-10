@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+    
+    <appender name="LOGFILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/var/log/hdxts/hdxts-batch-tracking-service/hdxts-batch-tracking-service.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{MM/dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+            <FileNamePattern>/var/log/hdxts/hdxts-batch-tracking-service/hdxts-batch-tracking-service.log.%i.zip</FileNamePattern>
+            <MinIndex>0</MinIndex>
+            <MaxIndex>9</MaxIndex>
+        </rollingPolicy>
+        <triggeringPolicy
+            class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+    <% node['edifecs']['batch_rest']['log_levels'].each do |package,log_level|  %>
+        <%= '<logger name="' + package + '" level="' + log_level + '"/>' %>
+    <% end  %>
+    <root level="<%= node['edifecs']['batch_rest']['root_log_level'] %>">
+        <appender-ref ref="LOGFILE" />
+    </root>
+</configuration>

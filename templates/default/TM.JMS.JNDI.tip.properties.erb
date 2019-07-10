@@ -1,0 +1,6 @@
+java.naming.provider.url=<%= @mq_provider_url %>
+java.naming.factory.initial=com.edifecs.etools.xeserver.jms.factory.ContextFactory
+ibm.queuemanager=<%= @mq_manager %>
+ibm.channel=SYSTEM.ADMIN.SVRCONN
+ibm.connection.mode=TCPIP
+connection.factory.jndi.name=<%= @mq_manager %>

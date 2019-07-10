@@ -1,0 +1,6 @@
+define listener(CERN.TCP.LISTENER) trptype(tcp) control(qmgr) port(1415)
+start listener(CERN.TCP.LISTENER)
+define channel(SYSTEM.ADMIN.SVRCONN) chltype(SVRCONN) REPLACE
+set CHLAUTH(SYSTEM.ADMIN.*) TYPE(BLOCKUSER) USERLIST('nobody')
+set CHLAUTH(SYSTEM.DEF.SVRCONN) TYPE(BLOCKUSER) USERLIST('nobody')
+set CHLAUTH(*) TYPE(BLOCKUSER) USERLIST('nobody','*MQADMIN')

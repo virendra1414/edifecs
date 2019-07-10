@@ -1,0 +1,9 @@
+BatchTrackingServiceURL=<%= node['edifecs']['xes_server']['properties']['batch_tracking_service_url'] %>
+QueueUserName=mqm
+Authentication_Token=<%= @oauth_bearer_token %>
+QueueProviderUrl=<%= @queueproviderurl %>
+QueueManager=<%= @mq_manager %>
+QueuePassword=<%= @mq_password %>
+QueueChannel=SYSTEM.ADMIN.SVRCONN
+ScriptLocation=/opt/Edifecs/ArtifactsRepository/HDXTS_artifacts/scripts
+JDBC_URL=<%= node['edifecs']['hdxts_tomcat']['database_url'] %>

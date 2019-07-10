@@ -1,0 +1,118 @@
+#------------------------------------------------------------------------------------------------------------------------
+# Enablement Administration Properties
+#------------------------------------------------------------------------------------------------------------------------
+#Database system administrator username/password for EnablementServerName
+enablement.administrator.user.name=<%= @edifecs_install_username %>
+enablement.administrator.password=<%= @edifecs_install_password %>
+
+#Optional properties that specify the FileGroups/Tablespaces for Enablement database. Enablement/EnablementIdx by default.
+#enablement.data.file.group=
+#enablement.index.file.group=
+
+#Folder path to store data files of Enablement Database
+#Please make sure that the path separators are database server operating system specific and path ends with the separator.
+#For linux or unix use "/" as path separator.
+#For installing SQL Server & Oracle database on Windows use "\\" as path separator
+enablement.data.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+enablement.index.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+enablement.log.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+
+#------------------------------------------------------------------------------------------------------------------------
+# Active Administration Properties
+#------------------------------------------------------------------------------------------------------------------------
+#Database system administrator username/password for ActiveServerName
+active.administrator.user.name=<%= @edifecs_install_username %>
+active.administrator.password=<%= @edifecs_install_password %>
+
+#Optional properties that specify the FileGroups/Tablespaces for Active database. HTR/HTRIdx/HTR_partitioned by default.
+#The partition file group parameter will be ignored in case of non-partitioned schema.
+#Please make sure that partition file group name is only 20 character long. "_unlimited" gets appended to file group name for last partition.
+active.data.file.group=edfx_ecactive_data
+active.index.file.group=edfx_ecactive_idx
+active.partition.file.group=edfx_ecactive_part
+
+#Folder path to store data files of Active database
+#Please make sure that the path separators are database server operating system specific and path ends with the separator.
+#For linux or unix use "/" as path separator.
+#For installing SQL Server & Oracle database on Windows use "\\" as path separator
+active.data.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+active.index.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+active.log.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+
+#An optional property for clean install that specifies if the schema is partitioned. False by default.
+#The property will be ignored for upgrade.
+active.schema.partition=true
+#An optional property that indicates if all partitions will be created in a separate FileGroup/Tablespace. False by default for partitioned schema.
+#The property will be ignored if specified for non-partitioned schema.
+active.partition.per.file=false
+#An optional property that indicates the partitions strategy. Values: MONTHLY/QUARTERLY/HALF_YEARLY/YEARLY. MONTHLY by default for partitioned schema.
+#The property will be ignored if specified for non-partitioned schema.
+#active.partition.strategy=MONTHLY
+#An optional property that indicates the partitioning duration in months. 12 months by default for partitioned schema.
+#The property will be ignored if specified for non-partitioned schema.
+#active.partition.duration.months=12
+
+#------------------------------------------------------------------------------------------------------------------------
+# GBD Administration Properties
+#------------------------------------------------------------------------------------------------------------------------
+#Number of data files per database. 1 by default.
+#gbd.data.files=1
+
+#Database system administrator username/password for GBDServerName
+gbd.administrator.user.name=<%= @edifecs_install_username %>
+gbd.administrator.password=<%= @edifecs_install_password %>
+
+#Optional properties that specify the FileGroups/Tablespaces for GBD database. GBD{index}/GBDIdx{index}/GBD_partitioned{index} by default.
+#The partition file group parameter will be ignored in case of non-partitioned schema.
+#Please make sure that partition file group name is only 20 character long. "_unlimited" gets appended to file group name for last partition.
+gbd.data.file.group=edfx_gbd_data
+gbd.index.file.group=edfx_gbd_idx
+gbd.partition.file.group=edfx_gbd_part
+
+#Folder path to store data files of GBD database
+#Please make sure that the path separators are database server operating system specific and path ends with the separator.
+#For linux or unix use "/" as path separator.
+#For installing SQL Server & Oracle database on Windows use "\\" as path separator
+gbd.data.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+gbd.index.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+gbd.log.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+
+#An optional property for clean install that specifies if the schema is partitioned. False by default.
+#The property will be ignored for upgrade.
+gbd.schema.partition=true
+#An optional property that indicates if all partitions will be created in a separate FileGroup/Tablespace. False by default for partitioned schema.
+#The property will be ignored if specified for non-partitioned schema.
+gbd.partition.per.file=false
+#An optional property that indicates the partitions strategy. Values: MONTHLY/QUARTERLY/HALF_YEARLY/YEARLY. MONTHLY by default for partitioned schema.
+#The property will be ignored if specified for non-partitioned schema.
+#gbd.partition.strategy=MONTHLY
+#An optional property that indicates the partitioning duration in months. 12 months by default for partitioned schema.
+#The property will be ignored if specified for non-partitioned schema.
+#gbd.partition.duration.months=12
+
+#------------------------------------------------------------------------------------------------------------------------
+# Datastorage Administration Properties
+#------------------------------------------------------------------------------------------------------------------------
+#Database system administrator username/password for DatastorageServerName
+TMDS.administrator.user.name=<%= @edifecs_install_username %>
+TMDS.administrator.password=<%= @edifecs_install_password %>
+
+#Folder path to store data files of Datastorage Database
+#Please make sure that the path separators are database server operating system specific and path ends with the separator.
+#For linux or unix use "/" as path separator.
+#For installing SQL Server & Oracle database on Windows use "\\" as path separator
+TMDS.data.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+TMDS.log.folder=+<%= node['edifecs']['database']['diskgroup'] %>/
+
+#------------------------------------------------------------------------------------------------------------------------
+#Oracle Specific Properties
+#------------------------------------------------------------------------------------------------------------------------
+#An optional property for Oracle platform, that specifies if DB is installed using ASM. False by default.
+#active.oracle.asm=false
+#enablement.oracle.asm=false
+#gbd.oracle.asm=false
+
+#Optional property for Oracle platform that specifies if the indexes are case insensitive. False by default.
+#active.oracle.case.insensitive.indexes=
+#enablement.oracle.case.insensitive.indexes=
+#gbd.oracle.case.insensitive.indexes=

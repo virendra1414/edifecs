@@ -1,0 +1,180 @@
+#/bin/sh
+cd /opt/EdifecsSetup/TM882/content-pack-deploy/
+nexus_url=<%=node['edifecs']['repository_url'] %>
+cp_dir=hdxts-content-pack
+cp_artifact=hdxts-edifecs-cp
+cp_zip=hdxts-edifecs-cp.zip
+if [ $1 == "CLEAN" ]
+then
+    echo "Remmoving $cp_zip"
+    rm -f $cp_zip
+    echo "Remmoving $cp_dir"
+    rm -rf $cp_dir
+    exit
+elif [ -z "$2" ]
+then
+    echo "Usage: ./deploy_hdxts.sh <XES|SM> <version>"
+    exit
+else
+    echo "Checking if $cp_zip exists"
+    if [ ! -f "$cp_zip" ]
+    then
+        echo "Installing content pack $cp_artifact-$2"
+        echo "Downloading $cp_artifact $2 from Nexus"
+        wget $nexus_url/service/local/repositories/releases/content/com/cerner/hdxts/edifecs/$cp_artifact/$2/$cp_artifact-$2.zip  -O $cp_zip --no-check-certificate
+        echo "Download finished $cp_artifact $2"
+    fi
+fi
+#
+# SM
+#
+if [ $1 == "SM" ]
+then
+  #Preparing Content Pack for SM
+  echo "Unzipping $cp_zip"
+  unzip -o -d $cp_dir $cp_zip
+  echo "Content Pack has been extracted"
+  echo "Removing custom profiles from $cp_dir for SM ContentPack"
+  #Removing Custom HDXTS Profiles and environment properties from content pack
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/Profiles/
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/XEServer/
+  echo "Cleaning up HDXTS_artifacts/* excluding severity for SM ContentPack"
+  #Deleting all the directories under HDXTS_artifacts except severity
+  find hdxts-content-pack/HDXTS_ContentPack/hdxts-cp/ArtifactsRepository/HDXTS_artifacts/ -mindepth 1 ! -name 'severity' -type d -exec rm -rf {} \+;
+  echo "Deploying SM HDXTS Content pack"
+  ./deploy.sh $cp_dir/HDXTS_ContentPack/ -debug -verbose -force
+  
+  
+#
+# TIP
+#
+elif [ $1 == "TIP" ]
+then
+  #Preparing Content Pack for TIP
+  echo "Unzipping $cp_zip"
+  unzip -o -d $cp_dir $cp_zip
+  echo "Content Pack has been extracted"
+  cd /opt/Edifecs/EAM/Server/ConfigTool/exec/nix
+  #./deploy_xescfg.sh $cp_dir/HDXTS_ContentPack/hdxts-cp/TIP/TrackingInfoProcessor001.zip -sl
+  #./deploy_xescfg.sh $cp_dir/HDXTS_ContentPack/hdxts-cp/TIP/TrackingInfoProcessor002.zip -sl
+  #./deploy_xescfg.sh $cp_dir/HDXTS_ContentPack/hdxts-cp/TIP/TrackingInfoProcessor003.zip -sl
+  ./deploy_xescfg.sh $cp_dir/HDXTS_ContentPack/hdxts-cp/TIP/LargeAttachmentHandler.zip -sl
+
+#
+# XES-BUS1
+#
+
+elif [ $1 == "XES-BUS1" ]
+then
+  #Preparing Content Pack for XES
+  echo "Unzipping $cp_zip"
+  unzip -o -d $cp_dir $cp_zip
+  echo "Content Pack has been extracted"
+  echo "Removing GBD and TPM directories from $cp_dir for XES ContentPack"
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/TPM
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/GBD
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/Profiles
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/XEServer
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/ArtifactsRepository/HDXTS_artifacts
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/Profiles_BUS2
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/XEServer_BUS2
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/ArtifactsRepository/HDXTS_artifacts_BUS2
+  mv -T $cp_dir/HDXTS_ContentPack/hdxts-cp/XEServer_BUS1 $cp_dir/HDXTS_ContentPack/hdxts-cp/XEServer
+  mv -T $cp_dir/HDXTS_ContentPack/hdxts-cp/Profiles_BUS1 $cp_dir/HDXTS_ContentPack/hdxts-cp/Profiles
+  mv -T $cp_dir/HDXTS_ContentPack/hdxts-cp/ArtifactsRepository/HDXTS_artifacts_BUS1 $cp_dir/HDXTS_ContentPack/hdxts-cp/ArtifactsRepository/HDXTS_artifacts
+  echo "Deploying XES HDXTS Content pack"
+  ./deploy.sh $cp_dir/HDXTS_ContentPack/ -debug -verbose -force
+
+  echo "Copying Dependencies"
+  file="app2.properties"
+  if [ -f "$file" ]; then
+      printf '%s\n' "Removing ($file)"
+      rm "$file"
+  fi
+
+  cat ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/app.properties | tr "\r" "\n" > app2.properties
+
+  dependent_file1="CrosswalkRegistry.xml"
+  dependent_file2="UUIDGenerator.jar"
+  dependent_file3="isa_aggregator.template.xml"
+  dependent_file4="XESelectorConfig837IP-generic.xml"
+  dependent_file5="XESelectorConfig_GEDI.xml"
+
+  if [ -f "$file" ]; then
+    echo "$file found"
+    prop_value1=$(sed 's/ *$//' $file | grep $dependent_file1 | cut -d '=' -f2)
+    prop_value2=$(sed 's/ *$//' $file | grep $dependent_file2 | cut -d '=' -f2)
+    prop_value3=$(sed 's/ *$//' $file | grep $dependent_file3 | cut -d '=' -f2)
+    prop_value4=$(sed 's/ *$//' $file | grep $dependent_file4 | cut -d '=' -f2)
+    prop_value5=$(sed 's/ *$//' $file | grep $dependent_file5 | cut -d '=' -f2)
+    echo $prop_value1
+    echo $prop_value2
+    echo $prop_value3
+    echo $prop_value4
+    echo $prop_value5
+    cp ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/$dependent_file5 $prop_value5
+    cp ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/$dependent_file4 $prop_value4
+    cp ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/$dependent_file3 $prop_value3
+    cp ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/$dependent_file2 $prop_value2
+    cp ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/$dependent_file1 $prop_value1
+    rm "$file"
+  else
+    echo "$file not found."
+  fi
+#
+# XES-BUS2
+#  
+elif [ $1 == "XES-BUS2" ]
+then
+  #Preparing Content Pack for XES
+  echo "Unzipping $cp_zip"
+  unzip -o -d $cp_dir $cp_zip
+  echo "Content Pack has been extracted"
+  echo "Removing GBD and TPM directories from $cp_dir for XES ContentPack"
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/TPM
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/GBD
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/Profiles
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/XEServer
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/ArtifactsRepository/HDXTS_artifacts
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/Profiles_BUS1
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/XEServer_BUS1
+  rm -r $cp_dir/HDXTS_ContentPack/hdxts-cp/ArtifactsRepository/HDXTS_artifacts_BUS1
+  mv -T $cp_dir/HDXTS_ContentPack/hdxts-cp/XEServer_BUS2 $cp_dir/HDXTS_ContentPack/hdxts-cp/XEServer
+  mv -T $cp_dir/HDXTS_ContentPack/hdxts-cp/Profiles_BUS2 $cp_dir/HDXTS_ContentPack/hdxts-cp/Profiles
+  mv -T $cp_dir/HDXTS_ContentPack/hdxts-cp/ArtifactsRepository/HDXTS_artifacts_BUS2 $cp_dir/HDXTS_ContentPack/hdxts-cp/ArtifactsRepository/HDXTS_artifacts
+  echo "Deploying XES HDXTS Content pack"
+  ./deploy.sh $cp_dir/HDXTS_ContentPack/ -debug -verbose -force
+
+  echo "Copying Dependencies"
+  file="app2.properties"
+  if [ -f "$file" ]; then
+      printf '%s\n' "Removing ($file)"
+      rm "$file"
+  fi
+
+  cat ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/app.properties | tr "\r" "\n" > app2.properties
+  
+  dependent_file1="db2jcc_license_cisuz.jar"
+  dependent_file2="db2jcc_license_cu.jar"
+  dependent_file3="db2jcc4.jar"
+  dependent_file4="user.cs"
+
+  if [ -f "$file" ]; then
+    echo "$file found"
+    prop_value1=$(sed 's/ *$//' $file | grep $dependent_file1 | cut -d '=' -f2)
+    prop_value2=$(sed 's/ *$//' $file | grep $dependent_file2 | cut -d '=' -f2)
+    prop_value3=$(sed 's/ *$//' $file | grep $dependent_file3 | cut -d '=' -f2)
+    prop_value4=$(sed 's/ *$//' $file | grep $dependent_file4 | cut -d '=' -f2)
+    echo $prop_value1
+    echo $prop_value2
+    echo $prop_value3
+    echo $prop_value4
+    cp ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/$dependent_file4 $prop_value4
+    cp ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/$dependent_file3 $prop_value3
+    cp ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/$dependent_file2 $prop_value2
+    cp ./$cp_dir/HDXTS_ContentPack/hdxts-cp/Dependencies/$dependent_file1 $prop_value1
+    rm "$file"
+  else
+    echo "$file not found."
+  fi
+fi

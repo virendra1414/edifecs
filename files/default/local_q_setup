@@ -1,0 +1,50 @@
+define qlocal(TM_XES_TRACKINGINFO_IN)
+define qlocal(TM_XES_TRACKINGINFO_FAILED)
+define qlocal(TM_XES_TRACKINGINFO_INVALID)
+define qlocal(TM_DATAEXPORT)
+define qlocal(TM_ETL_PACKAGE)
+define qlocal(TM_ETL_PACKAGE_FAILED)
+define qlocal(TM_ETL_PACKAGE_INVALID)
+define qlocal(TM_DI_PACKAGE)
+define qlocal(TM_DI_PACKAGE_FAILED)
+define qlocal(TM_DI_PACKAGE_INVALID)
+define qlocal(TM_XES_EVENT)
+define qlocal(TM_XES_EVENT_FAILED)
+define qlocal(TM_XES_EVENT_INVALID)
+define qlocal(TM_ETL_PACKAGE_RESUBMISSION)
+define qlocal(TM_ETL_PACKAGE_BACKOUT)
+define qlocal(TM_XES_EVENT_BACKOUT)
+
+alter qlocal(TM_ETL_PACKAGE_BACKOUT) defpsist(YES)
+
+alter qlocal(TM_ETL_PACKAGE) defpsist(YES)
+alter qlocal(TM_ETL_PACKAGE) maxdepth(50000)
+alter qlocal(TM_ETL_PACKAGE) boqname(TM_ETL_PACKAGE_BACKOUT)
+alter qlocal(TM_ETL_PACKAGE) bothresh(4)
+
+alter qlocal(TM_ETL_PACKAGE_FAILED) defpsist(YES)
+alter qlocal(TM_ETL_PACKAGE_INVALID) defpsist(YES)
+
+alter qlocal(TM_ETL_PACKAGE_RESUBMISSION) defpsist(YES)
+alter qlocal(TM_ETL_PACKAGE_RESUBMISSION) maxdepth(50000)
+alter qlocal(TM_ETL_PACKAGE_RESUBMISSION) boqname(TM_ETL_PACKAGE_INVALID)
+alter qlocal(TM_ETL_PACKAGE_RESUBMISSION) bothresh(4)
+
+alter qlocal(TM_XES_EVENT_BACKOUT) defpsist(YES)
+
+alter qlocal(TM_XES_EVENT) defpsist(YES)
+alter qlocal(TM_XES_EVENT) maxdepth(100000)
+alter qlocal(TM_XES_EVENT) boqname(TM_XES_EVENT_BACKOUT)
+alter qlocal(TM_XES_EVENT) bothresh(4)
+
+
+alter qlocal(TM_XES_EVENT_FAILED) defpsist(YES)
+alter qlocal(TM_XES_EVENT_INVALID) defpsist(YES)
+
+alter qlocal(TM_XES_TRACKINGINFO_IN) defpsist(YES)
+alter qlocal(TM_XES_TRACKINGINFO_FAILED) defpsist(YES)
+alter qlocal(TM_XES_TRACKINGINFO_INVALID) defpsist(YES)
+
+alter qlocal(TM_DI_PACKAGE) defpsist(YES)
+alter qlocal(TM_DI_PACKAGE_FAILED) defpsist(YES)
+alter qlocal(TM_DI_PACKAGE_INVALID) defpsist(YES)

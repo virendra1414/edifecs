@@ -1,0 +1,2119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE config SYSTEM "config.dtd">
+<config version="8.8.2">
+
+  <!-- Specifies the configuration to use. -->
+  <use-configuration>Distributed</use-configuration>
+
+  <!-- Defines a distributed install configuration. -->
+  <configuration name="Distributed">
+
+    <!-- Batch XES 1 -->
+    <computer name="cernedfxxes151.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+      <application name="SDK" type="sdk"/>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+      </application>
+
+      <!-- The installer will configure the DB selector if it is a fresh install or if you reconfigure an installed TM.
+                 If you upgrade a previous version it will leave it untouched.
+                 If you don't want the TM installer to configure it comment the following line -->
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+    <computer name="cernedfxxes152.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+      <application name="SDK" type="sdk"/>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+      </application>
+
+      <!-- The installer will configure the DB selector if it is a fresh install or if you reconfigure an installed TM.
+                 If you upgrade a previous version it will leave it untouched.
+                 If you don't want the TM installer to configure it comment the following line -->
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+    <computer name="cernedfxxes153.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+      <application name="SDK" type="sdk"/>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+      </application>
+
+      <!-- The installer will configure the DB selector if it is a fresh install or if you reconfigure an installed TM.
+                 If you upgrade a previous version it will leave it untouched.
+                 If you don't want the TM installer to configure it comment the following line -->
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+    <!-- CS: cernedfxtmbis101 BIS -->
+    <computer name="cernedfxtmbis151.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+
+      <application name="BIService" type="servicemanager">
+        <property name="MonitoringAgentPort">
+          <value>8091</value>
+        </property>
+        <services>
+          <service name="Business Item Service">
+            <property name="HTTPPort">
+              <value>8085</value>
+            </property>
+            <property name="ContextPath">
+              <value>biservice</value>
+            </property>
+            <property name="MaxDBAttachmentSize">
+              <value>102400</value>
+            </property>
+          </service>
+        </services>
+      </application>
+      <application name="SDK" type="sdk"/>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+      </application>
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+    <!-- CS: cernedfxtmbis102 BIS -->
+    <computer name="cernedfxtmbis152.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+
+      <application name="BIService" type="servicemanager">
+        <property name="MonitoringAgentPort">
+          <value>8091</value>
+        </property>
+        <services>
+          <service name="Business Item Service">
+            <property name="HTTPPort">
+              <value>8085</value>
+            </property>
+            <property name="ContextPath">
+              <value>biservice</value>
+            </property>
+            <property name="MaxDBAttachmentSize">
+              <value>102400</value>
+            </property>
+          </service>
+        </services>
+      </application>
+      <application name="SDK" type="sdk"/>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+      </application>
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+    <!-- CS: cernedfxtmbis103 BIS -->
+    <computer name="cernedfxtmbis153.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+
+      <application name="BIService" type="servicemanager">
+        <property name="MonitoringAgentPort">
+          <value>8091</value>
+        </property>
+        <services>
+          <service name="Business Item Service">
+            <property name="HTTPPort">
+              <value>8085</value>
+            </property>
+            <property name="ContextPath">
+              <value>biservice</value>
+            </property>
+            <property name="MaxDBAttachmentSize">
+              <value>102400</value>
+            </property>
+          </service>
+        </services>
+      </application>
+      <application name="SDK" type="sdk"/>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+      </application>
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+    <!-- CS: cernedfxtmetl101 - Batch ETL, ETLResubmission -->
+    <computer name="cernedfxtmetl151.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+      <application name="ETLBATCH" type="servicemanager">
+        <property name="MonitoringAgentPort">
+          <value>8091</value>
+        </property>
+        <services>
+          <service name="JMSEtlProcessor">
+            <property name="ThreadsCount">
+              <value>20</value>
+            </property>
+            <property name="JMS.Queue.Package">
+              <value>TM_ETL_PACKAGE</value>
+            </property>
+            <property name="JMS.Queue.Package.Failed">
+              <value>TM_ETL_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Package.Invalid">
+              <value>TM_ETL_PACKAGE_INVALID</value>
+            </property>
+            <property name="JMS.Queue.Package.DataIndexer">
+              <value>TM_DI_PACKAGE</value>
+            </property>
+            <!-- Service will stop if the count of consecutive unknown errors reaches this threshold. -->
+            <property name="ConsecutiveErrorsThreshold">
+              <value>9999</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+          <service name="DataIndexerProcessor">
+            <property name="ThreadsCount">
+              <value>20</value>
+            </property>
+            <property name="JMS.Queue.DataIndexer">
+              <value>TM_DI_PACKAGE</value>
+            </property>
+            <property name="JMS.Queue.DataIndexer.Failed">
+              <value>TM_DI_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.DataIndexer.Invalid">
+              <value>TM_DI_PACKAGE_INVALID</value>
+            </property>
+            <!-- Service will stop if the count of consecutive unknown errors reaches this threshold. -->
+            <property name="ConsecutiveErrorsThreshold">
+              <value>9999</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+          <service name="ID Provider Service">
+            <property name="JMXPort">
+              <value>5678</value>
+            </property>
+          </service>
+          <service name="XES Event Consumer Service">
+            <property name="ThreadsCount">
+              <value>20</value>
+            </property>
+            <property name="JMS.Queue.Event">
+              <value>TM_XES_EVENT</value>
+            </property>
+            <property name="JMS.Queue.Event.Failed">
+              <value>TM_XES_EVENT_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Event.Invalid">
+              <value>TM_XES_EVENT_INVALID</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+        </services>
+      </application>
+      <application name="ETLResubmission" type="servicemanager">
+        <property name="MonitoringAgentPort">
+          <value>8092</value>
+        </property>
+        <services>
+          <service name="JMSEtlProcessor Resubmission">
+            <property name="JMS.Queue.Package.Resubmission">
+              <value>TM_ETL_PACKAGE_RESUBMISSION</value>
+            </property>
+            <property name="JMS.Queue.Package.Failed">
+              <value>TM_ETL_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Package.Invalid">
+              <value>TM_ETL_PACKAGE_INVALID</value>
+            </property>
+            <property name="JMS.Queue.Package.DataIndexer">
+              <value>TM_DI_PACKAGE</value>
+            </property>
+            <property name="MaxEtlAttemptCount">
+              <value>3</value>
+            </property>
+
+            <!-- Service will stop if the count of consecutive unknown errors reaches this threshold. -->
+            <property name="ConsecutiveErrorsThreshold">
+              <value>9999</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+        </services>
+      </application>
+
+      <application name="SDK" type="sdk"/>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+      </application>
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+    <!-- CS: cernedfxtmetl102 - Batch ETL, ETLResubmission -->
+    <computer name="cernedfxtmetl152.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+      <application name="ETLBATCH" type="servicemanager">
+        <property name="MonitoringAgentPort">
+          <value>8091</value>
+        </property>
+        <services>
+          <service name="JMSEtlProcessor">
+            <property name="ThreadsCount">
+              <value>20</value>
+            </property>
+            <property name="JMS.Queue.Package">
+              <value>TM_ETL_PACKAGE</value>
+            </property>
+            <property name="JMS.Queue.Package.Failed">
+              <value>TM_ETL_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Package.Invalid">
+              <value>TM_ETL_PACKAGE_INVALID</value>
+            </property>
+            <property name="JMS.Queue.Package.DataIndexer">
+              <value>TM_DI_PACKAGE</value>
+            </property>
+            <!-- Service will stop if the count of consecutive unknown errors reaches this threshold. -->
+            <property name="ConsecutiveErrorsThreshold">
+              <value>9999</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+          <service name="DataIndexerProcessor">
+            <property name="ThreadsCount">
+              <value>20</value>
+            </property>
+            <property name="JMS.Queue.DataIndexer">
+              <value>TM_DI_PACKAGE</value>
+            </property>
+            <property name="JMS.Queue.DataIndexer.Failed">
+              <value>TM_DI_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.DataIndexer.Invalid">
+              <value>TM_DI_PACKAGE_INVALID</value>
+            </property>
+            <!-- Service will stop if the count of consecutive unknown errors reaches this threshold. -->
+            <property name="ConsecutiveErrorsThreshold">
+              <value>9999</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+          <service name="ID Provider Service">
+            <property name="JMXPort">
+              <value>5678</value>
+            </property>
+          </service>
+          <service name="XES Event Consumer Service">
+            <property name="ThreadsCount">
+              <value>20</value>
+            </property>
+            <property name="JMS.Queue.Event">
+              <value>TM_XES_EVENT</value>
+            </property>
+            <property name="JMS.Queue.Event.Failed">
+              <value>TM_XES_EVENT_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Event.Invalid">
+              <value>TM_XES_EVENT_INVALID</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+        </services>
+      </application>
+      <application name="ETLResubmission" type="servicemanager">
+        <property name="MonitoringAgentPort">
+          <value>8092</value>
+        </property>
+        <services>
+          <service name="JMSEtlProcessor Resubmission">
+            <property name="JMS.Queue.Package.Resubmission">
+              <value>TM_ETL_PACKAGE_RESUBMISSION</value>
+            </property>
+            <property name="JMS.Queue.Package.Failed">
+              <value>TM_ETL_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Package.Invalid">
+              <value>TM_ETL_PACKAGE_INVALID</value>
+            </property>
+            <property name="JMS.Queue.Package.DataIndexer">
+              <value>TM_DI_PACKAGE</value>
+            </property>
+            <property name="MaxEtlAttemptCount">
+              <value>3</value>
+            </property>
+
+            <!-- Service will stop if the count of consecutive unknown errors reaches this threshold. -->
+            <property name="ConsecutiveErrorsThreshold">
+              <value>9999</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+        </services>
+      </application>
+
+      <application name="SDK" type="sdk"/>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+      </application>
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+    <!-- CS: cernedfxtmetl103 - Batch ETL, ETLResubmission -->
+    <computer name="cernedfxtmetl153.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+      <application name="ETLBATCH" type="servicemanager">
+        <property name="MonitoringAgentPort">
+          <value>8091</value>
+        </property>
+        <services>
+          <service name="JMSEtlProcessor">
+            <property name="ThreadsCount">
+              <value>20</value>
+            </property>
+            <property name="JMS.Queue.Package">
+              <value>TM_ETL_PACKAGE</value>
+            </property>
+            <property name="JMS.Queue.Package.Failed">
+              <value>TM_ETL_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Package.Invalid">
+              <value>TM_ETL_PACKAGE_INVALID</value>
+            </property>
+            <property name="JMS.Queue.Package.DataIndexer">
+              <value>TM_DI_PACKAGE</value>
+            </property>
+            <!-- Service will stop if the count of consecutive unknown errors reaches this threshold. -->
+            <property name="ConsecutiveErrorsThreshold">
+              <value>9999</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+          <service name="DataIndexerProcessor">
+            <property name="ThreadsCount">
+              <value>20</value>
+            </property>
+            <property name="JMS.Queue.DataIndexer">
+              <value>TM_DI_PACKAGE</value>
+            </property>
+            <property name="JMS.Queue.DataIndexer.Failed">
+              <value>TM_DI_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.DataIndexer.Invalid">
+              <value>TM_DI_PACKAGE_INVALID</value>
+            </property>
+            <!-- Service will stop if the count of consecutive unknown errors reaches this threshold. -->
+            <property name="ConsecutiveErrorsThreshold">
+              <value>9999</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+          <service name="ID Provider Service">
+            <property name="JMXPort">
+              <value>5678</value>
+            </property>
+          </service>
+          <service name="XES Event Consumer Service">
+            <property name="ThreadsCount">
+              <value>20</value>
+            </property>
+            <property name="JMS.Queue.Event">
+              <value>TM_XES_EVENT</value>
+            </property>
+            <property name="JMS.Queue.Event.Failed">
+              <value>TM_XES_EVENT_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Event.Invalid">
+              <value>TM_XES_EVENT_INVALID</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+        </services>
+      </application>
+      <application name="ETLResubmission" type="servicemanager">
+        <property name="MonitoringAgentPort">
+          <value>8092</value>
+        </property>
+        <services>
+          <service name="JMSEtlProcessor Resubmission">
+            <property name="JMS.Queue.Package.Resubmission">
+              <value>TM_ETL_PACKAGE_RESUBMISSION</value>
+            </property>
+            <property name="JMS.Queue.Package.Failed">
+              <value>TM_ETL_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Package.Invalid">
+              <value>TM_ETL_PACKAGE_INVALID</value>
+            </property>
+            <property name="JMS.Queue.Package.DataIndexer">
+              <value>TM_DI_PACKAGE</value>
+            </property>
+            <property name="MaxEtlAttemptCount">
+              <value>3</value>
+            </property>
+
+            <!-- Service will stop if the count of consecutive unknown errors reaches this threshold. -->
+            <property name="ConsecutiveErrorsThreshold">
+              <value>9999</value>
+            </property>
+            <!-- If not 0, then this is the maximum number of check resources attempts before the service is stopped. -->
+            <property name="CheckResourcesMaxAttempts">
+              <value>0</value>
+            </property>
+          </service>
+        </services>
+      </application>
+
+      <application name="SDK" type="sdk"/>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+      </application>
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+    <!-- CS: Master Service Manager -->
+    <computer name="cernedfxtmsm151.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+      <application name="configserver" type="tm-config-server">
+        <property name="KeyStoreLocation">
+          <value>config-server/config/tm_certs.jks</value>
+        </property>
+        <property name="KeyStorePassword" type="encrypted">
+          <value>ezCdBPhaAF4ofRD82e/Ibg==</value>
+        </property>
+        <property name="ServerPort">
+          <value>8989</value>
+        </property>
+      </application>
+
+      <application name="ServiceManager" type="servicemanager">
+        <!-- Monitoring Agent HTTP port. -->
+        <property name="MonitoringAgentPort">
+          <value>8091</value>
+        </property>
+        <services>
+          <!-- Master File Store service, maximum one per configuration. -->
+          <service name="File Store Service">
+            <!-- For each application maximum one File Store service is allowed.
+                         A Slave File Store service must have property IsMaster=false.
+                         For non Windows platforms the RepositoryLocation property is required too.
+        -->
+            <!--Optional property to indicate a remote repository folder.-->
+            <property name="RepositoryLocation">
+              <value>/mnt/edifecs_system/HTR_REPOSITORY</value>
+              <!-- CS: Check if there is any NAS location for repository -->
+            </property>
+            <property name="IsMaster">
+              <value>true</value>
+            </property>
+
+            <!--  Optional property to indicate the default file repository domain.
+                       <property name="DefaultDomain">
+                           <value>TransmissionFiles</value>
+                       </property> -->
+          </service>
+          <service name="File Store Archive Service"/>
+          <service name="File Store Purge Service"/>
+          <service name="GBD File Repository Service">
+            <!--  Optional property to indicate a remote repository folder. -->
+            <property name="RepositoryLocation">
+              <value>/mnt/edifecs_system/GBD_REPOSITORY</value>
+              <!-- CS: Check if there is any NAS location for repository -->
+            </property>
+            <!--  Optional property to indicate the default file repository domain.
+                       <property name="DefaultDomain">
+                           <value>TransmissionFiles</value>
+                       </property> -->
+            <property name="IsMaster">
+              <value>true</value>
+            </property>
+
+          </service>
+          <service name="GBD File Repository Archive Service"/>
+          <service name="GBD File Repository Purge Service">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <!--Tpm Synchronization Service, maximum one per configuration-->
+          <service name="TpmSynchronizationService"/>
+          <service name="Attachment Purge Service">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <service name="DataExporter Service">
+            <property name="ThreadsCount">
+              <value>1</value>
+            </property>
+            <property name="JMS.Queue.DataExport">
+              <value>TM_DATAEXPORT</value>
+            </property>
+          </service>
+          <service name="Notification Scheduler Task"/>
+          <service name="Update Partner Status Service">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <service name="Business Rules Engine"/>
+          <!-- Datamart service to load business document datamart, maximum one per configuration. -->
+          <service name="DataMartBusinessDocumentService">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <!-- Datamart service to load Validation error datamart, maximum one per configuration. -->
+          <service name="DataMartValidationErrorService">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <service name="Item Delete Service"/>
+          <!-- GBD Retry Loader Service to load by matching External ID to Repository -->
+          <service name="GBD Retry Loader Service">
+            <property name="MaxRetryAttempts">
+              <value>10</value>
+            </property>
+            <property name="ActionInterval">
+              <value>300000</value>
+            </property>
+          </service>
+          <!-- TI Processor services required for HTR_BATCH mode -->
+          <service name="TrackingInfo Identification Service"/>
+          <service name="TrackingInfo Loader Service"/>
+          <service name="TrackingInfo Notification Service"/>
+          <service name="GBDInfo Notification Service"/>
+          <!--  <service name="Workflow Service">
+                        <property name="HTTPPort">
+                            <value>8086</value>
+                        </property>
+                        <property name="ContextPath">
+                            <value>taskmgmt</value>
+                        </property>
+                    </service>
+          <service name="Workflow Starting Service">
+                        <property name="ActionInterval">
+                            <value>10000</value>
+      -->
+          <!-- 10 seconds of action interval
+      -->
+          <!--        </property>
+                        <property name="BatchCount">
+                            <value>500</value>
+                        </property>
+                    </service>
+      -->
+          <service name="XEServer Drop File Service"/>
+          <service name="XEServer Drop File Service GBD">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+            <property name="TMInboundDir">
+              <value>${XESRoot}/profiles/TM_RIM_GBD/workspace/tm/gbd/inbound/batch</value>
+            </property>
+            <property name="TMOutboundDir">
+              <value>${XESRoot}/profiles/TM_RIM_GBD/workspace/tm/gbd/outbound/batch</value>
+            </property>
+          </service>
+          <service name="Guideline Service"/>
+          <service name="ETL Guideline Loader"/>
+        </services>
+      </application>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+        <profiles>
+          <profile httpPort="9383" httpsPort="9436" name="TM">
+            <property name="JMS.Queue.DataExport">
+              <value>TM_DATAEXPORT</value>
+            </property>
+            <property name="TMDataExport_DataStorage_JDBC_URL">
+              <value>jdbc:h2:file:${XESWorkspace}/DS/data</value>
+            </property>
+            <property name="TMDataExport_DataStorage_Expiration">
+              <value>1728000000</value>
+            </property>
+            <property name="TMDataExport_EmailFrom">
+              <value>dataexport@yourorg.com</value>
+            </property>
+          </profile>
+          <profile name="TMResubmission" template="TMResubmission">
+            <property name="JMS.Queue.Package.Resubmission">
+              <value>TM_ETL_PACKAGE_RESUBMISSION</value>
+            </property>
+            <property name="JMS.Queue.Package.Failed">
+              <value>TM_ETL_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Package.Invalid">
+              <value>TM_ETL_PACKAGE_INVALID</value>
+            </property>
+            <property name="EtlRecoveryFolder">
+              <value>/mnt/edifecs_system/etl-recovery</value>
+            </property>
+            <property name="MaxResubmissionRetryCount">
+              <value>5</value>
+            </property>
+          </profile>
+
+          <profile name="TM_Search_Service">
+            <property name="TM_Search_Service_context_path">
+              <value>/search</value>
+            </property>
+            <property name="TM_Search_Service_port">
+              <value>9101</value>
+            </property>
+            <property name="TM_Search_Service_es_embedded_path">
+              <value>/mnt/edifecs_system/SearchRepo/Index</value>
+            </property>
+            <property name="TM_Search_Service_es_embedded_port">
+              <value>9300</value>
+            </property>
+            <jvmArgs>
+              -Xms3g
+              -Xmx3g
+              -Djava.awt.headless=true
+              -Djava.net.preferIPv4Stack=true
+              -XX:+UseParNewGC
+              -XX:+UseConcMarkSweepGC
+              -XX:CMSInitiatingOccupancyFraction=75
+              -XX:+UseCMSInitiatingOccupancyOnly
+            </jvmArgs>
+          </profile>
+
+          <!--  <profile name="TM_Search_IndexerHTR">
+                        <jvmArgs>
+                            -Xmx1g
+                        </jvmArgs>
+                    </profile>-->
+
+          <profile name="TM_Search_IndexerGBD">
+            <jvmArgs>
+              -Xmx3g
+            </jvmArgs>
+          </profile>
+          <!--
+                    <profile name="TM_Graph_DB">
+                        <property name="TM_Graph_DB_port">
+                            <value>2424</value>
+                        </property>
+                        <property name="TM_Graph_DB_database_path">
+                            <value>${ECRootPath}/Data/TM/Graph/databases/</value>
+                        </property>
+                        <property name="TM_Graph_DB_user">
+                            <value>tmuser</value>
+                        </property>
+                        <property name="TM_Graph_DB_password">
+                            <value>manager</value>
+                        </property>
+                        <property name="TM_Graph_DB_root_password">
+                            <value>manager</value>
+                        </property>
+                        <property name="TM_Graph_DB_backup_dir">
+                            <value>${ECRootPath}/Data/TM/Graph/backup</value>
+                        </property>
+      -->
+          <!-- (time format: HH:mm:ss) -->
+          <!--Note: In current version an automatic backup will be triggered at server start if the restart occurs later than "TM_Graph_DB_backup_firsttime"-->
+          <!--           <property name="TM_Graph_DB_backup_firsttime">
+                            <value>23:00:00</value>
+                        </property>
+                        <jvmArgs>
+                            -Xmx1G
+                            -server
+                            -XX:+AggressiveOpts
+                            -XX:CompileThreshold=200
+                        </jvmArgs>
+                    </profile>
+      -->
+        </profiles>
+      </application>
+
+      <application name="SDK" type="sdk"/>
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+    <!-- CS: First Slave Service Manager -->
+    <computer name="cernedfxtmsm152.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+
+      <application name="ServiceManager" type="servicemanager">
+        <!-- Monitoring Agent HTTP port. -->
+        <property name="MonitoringAgentPort">
+          <value>8091</value>
+        </property>
+        <services>
+          <!-- Master File Store service, maximum one per configuration. -->
+          <service name="File Store Service">
+            <!-- For each application maximum one File Store service is allowed.
+                         A Slave File Store service must have property IsMaster=false.
+                         For non Windows platforms the RepositoryLocation property is required too.
+        -->
+            <!--Optional property to indicate a remote repository folder.-->
+            <property name="RepositoryLocation">
+              <value>/mnt/edifecs_system/HTR_REPOSITORY</value>
+              <!-- CS: Check if there is any NAS location for repository -->
+            </property>
+            <property name="IsMaster">
+              <value>false</value>
+            </property>
+
+            <!--  Optional property to indicate the default file repository domain.
+                       <property name="DefaultDomain">
+                           <value>TransmissionFiles</value>
+                       </property> -->
+          </service>
+          <service name="File Store Archive Service"/>
+          <service name="File Store Purge Service"/>
+          <service name="GBD File Repository Service">
+            <!--  Optional property to indicate a remote repository folder. -->
+            <property name="RepositoryLocation">
+              <value>/mnt/edifecs_system/GBD_REPOSITORY</value>
+              <!-- CS: Check if there is any NAS location for repository -->
+            </property>
+            <!--  Optional property to indicate the default file repository domain.
+                       <property name="DefaultDomain">
+                           <value>TransmissionFiles</value>
+                       </property> -->
+            <property name="IsMaster">
+              <value>false</value>
+            </property>
+
+          </service>
+          <service name="GBD File Repository Archive Service"/>
+          <service name="GBD File Repository Purge Service">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <!--Tpm Synchronization Service, maximum one per configuration
+          <service name="TpmSynchronizationService"/>-->
+          <service name="Attachment Purge Service">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <service name="DataExporter Service">
+            <property name="ThreadsCount">
+              <value>1</value>
+            </property>
+            <property name="JMS.Queue.DataExport">
+              <value>TM_DATAEXPORT</value>
+            </property>
+          </service>
+          <service name="Notification Scheduler Task"/>
+          <service name="Update Partner Status Service">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <service name="Business Rules Engine"/>
+          <!-- Datamart service to load business document datamart, maximum one per configuration.
+          <service name="DataMartBusinessDocumentService">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>-->
+          <!-- Datamart service to load Validation error datamart, maximum one per configuration.
+          <service name="DataMartValidationErrorService">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>-->
+          <service name="Item Delete Service"/>
+          <!-- GBD Retry Loader Service to load by matching External ID to Repository -->
+          <service name="GBD Retry Loader Service">
+            <property name="MaxRetryAttempts">
+              <value>10</value>
+            </property>
+            <property name="ActionInterval">
+              <value>300000</value>
+            </property>
+          </service>
+          <!-- TI Processor services required for HTR_BATCH mode -->
+          <service name="TrackingInfo Identification Service"/>
+          <service name="TrackingInfo Loader Service"/>
+          <service name="TrackingInfo Notification Service"/>
+          <service name="GBDInfo Notification Service"/>
+          <!--  <service name="Workflow Service">
+                        <property name="HTTPPort">
+                            <value>8086</value>
+                        </property>
+                        <property name="ContextPath">
+                            <value>taskmgmt</value>
+                        </property>
+                    </service>
+          <service name="Workflow Starting Service">
+                        <property name="ActionInterval">
+                            <value>10000</value>
+      -->
+          <!-- 10 seconds of action interval
+      -->
+          <!--        </property>
+                        <property name="BatchCount">
+                            <value>500</value>
+                        </property>
+                    </service>
+      -->
+          <service name="XEServer Drop File Service"/>
+          <service name="XEServer Drop File Service GBD">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+            <property name="TMInboundDir">
+              <value>${XESRoot}/profiles/TM_RIM_GBD/workspace/tm/gbd/inbound/batch</value>
+            </property>
+            <property name="TMOutboundDir">
+              <value>${XESRoot}/profiles/TM_RIM_GBD/workspace/tm/gbd/outbound/batch</value>
+            </property>
+          </service>
+          <service name="Guideline Service"/>
+          <service name="ETL Guideline Loader"/>
+        </services>
+      </application>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+        <profiles>
+          <profile httpPort="9383" httpsPort="9436" name="TM">
+            <property name="JMS.Queue.DataExport">
+              <value>TM_DATAEXPORT</value>
+            </property>
+            <property name="TMDataExport_DataStorage_JDBC_URL">
+              <value>jdbc:h2:file:${XESWorkspace}/DS/data</value>
+            </property>
+            <property name="TMDataExport_DataStorage_Expiration">
+              <value>1728000000</value>
+            </property>
+            <property name="TMDataExport_EmailFrom">
+              <value>dataexport@yourorg.com</value>
+            </property>
+          </profile>
+          <profile name="TMResubmission" template="TMResubmission">
+            <property name="JMS.Queue.Package.Resubmission">
+              <value>TM_ETL_PACKAGE_RESUBMISSION</value>
+            </property>
+            <property name="JMS.Queue.Package.Failed">
+              <value>TM_ETL_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Package.Invalid">
+              <value>TM_ETL_PACKAGE_INVALID</value>
+            </property>
+            <property name="EtlRecoveryFolder">
+              <value>/mnt/edifecs_system/etl-recovery</value>
+            </property>
+            <property name="MaxResubmissionRetryCount">
+              <value>5</value>
+            </property>
+          </profile>
+
+          <!--
+                    <profile name="TM_Archive">
+                        <property name="TM_Archive_context_path">
+                            <value>/archive</value>
+                        </property>
+                        <property name="TM_Archive_port">
+                            <value>9102</value>
+                        </property>
+                        <property name="TM_Archive_filestore_path">
+                            <value>${ECRootPath}/Data/TM/Archive/FileStore</value>
+                        </property>
+                        <property name="TM_Archive_es_embedded_path">
+                            <value>${ECRootPath}/Data/TM/Archive/Index</value>
+                        </property>
+                        <property name="TM_Archive_purge_conf_path">
+                            <value></value>
+                        </property>
+                        <property name="TM_Archive_purge_cron">
+                            <value>0 0 0 * * SUN</value>
+                        </property>
+                        <jvmArgs>
+                            -Xms2g
+                            -Xmx2g
+                            -Djava.awt.headless=true
+                            -Djava.net.preferIPv4Stack=true
+                            -XX:+UseParNewGC
+                            -XX:+UseConcMarkSweepGC
+                            -XX:CMSInitiatingOccupancyFraction=75
+                            -XX:+UseCMSInitiatingOccupancyOnly
+                        </jvmArgs>
+                    </profile>
+                    <profile name="TM_Archiver_HTR">
+                        <property name="TM_Archiver_etl_cron">
+                            <value>0 0 1 * * ?</value>
+                        </property>
+                        <property name="TM_Archiver_etl_endTime">
+                            <value>5:00 AM</value>
+                        </property>
+                        <jvmArgs>
+                            -Xms1g
+                            -Xmx6g
+                            -Xrs
+                            -XX:NewRatio=2
+                            -XX:SurvivorRatio=8
+                            -XX:+UseCompressedOops
+                            -XX:+UseParNewGC
+                            -XX:+UseConcMarkSweepGC
+                            -XX:CMSInitiatingOccupancyFraction=75
+                            -XX:SoftRefLRUPolicyMSPerMB=500
+                        </jvmArgs>
+                    </profile>
+                    -->
+          <profile name="TM_Search_Service">
+            <property name="TM_Search_Service_context_path">
+              <value>/search</value>
+            </property>
+            <property name="TM_Search_Service_port">
+              <value>9101</value>
+            </property>
+            <property name="TM_Search_Service_es_embedded_path">
+              <value>/mnt/edifecs_system/SearchRepo/Index</value>
+            </property>
+            <property name="TM_Search_Service_es_embedded_port">
+              <value>9300</value>
+            </property>
+            <jvmArgs>
+              -Xms3g
+              -Xmx3g
+              -Djava.awt.headless=true
+              -Djava.net.preferIPv4Stack=true
+              -XX:+UseParNewGC
+              -XX:+UseConcMarkSweepGC
+              -XX:CMSInitiatingOccupancyFraction=75
+              -XX:+UseCMSInitiatingOccupancyOnly
+            </jvmArgs>
+          </profile>
+
+          <!--    <profile name="TM_Search_IndexerHTR">
+                        <jvmArgs>
+                            -Xmx1g
+                        </jvmArgs>
+                    </profile>-->
+
+          <profile name="TM_Search_IndexerGBD">
+            <jvmArgs>
+              -Xmx3g
+            </jvmArgs>
+          </profile>
+          <!--
+                    <profile name="TM_Graph_DB">
+                        <property name="TM_Graph_DB_port">
+                            <value>2424</value>
+                        </property>
+                        <property name="TM_Graph_DB_database_path">
+                            <value>${ECRootPath}/Data/TM/Graph/databases/</value>
+                        </property>
+                        <property name="TM_Graph_DB_user">
+                            <value>tmuser</value>
+                        </property>
+                        <property name="TM_Graph_DB_password">
+                            <value>manager</value>
+                        </property>
+                        <property name="TM_Graph_DB_root_password">
+                            <value>manager</value>
+                        </property>
+                        <property name="TM_Graph_DB_backup_dir">
+                            <value>${ECRootPath}/Data/TM/Graph/backup</value>
+                        </property>
+      -->
+          <!-- (time format: HH:mm:ss) -->
+          <!--Note: In current version an automatic backup will be triggered at server start if the restart occurs later than "TM_Graph_DB_backup_firsttime"-->
+          <!--           <property name="TM_Graph_DB_backup_firsttime">
+                            <value>23:00:00</value>
+                        </property>
+                        <jvmArgs>
+                            -Xmx1G
+                            -server
+                            -XX:+AggressiveOpts
+                            -XX:CompileThreshold=200
+                        </jvmArgs>
+                    </profile>
+      -->
+        </profiles>
+      </application>
+
+      <application name="SDK" type="sdk"/>
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+    <!-- CS: Second Slave Service Manager -->
+    <computer name="cernedfxtmsm153.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+
+      <application name="ServiceManager" type="servicemanager">
+        <!-- Monitoring Agent HTTP port. -->
+        <property name="MonitoringAgentPort">
+          <value>8091</value>
+        </property>
+        <services>
+          <!-- Master File Store service, maximum one per configuration. -->
+          <service name="File Store Service">
+            <!-- For each application maximum one File Store service is allowed.
+                         A Slave File Store service must have property IsMaster=false.
+                         For non Windows platforms the RepositoryLocation property is required too.
+        -->
+            <!--Optional property to indicate a remote repository folder.-->
+            <property name="RepositoryLocation">
+              <value>/mnt/edifecs_system/HTR_REPOSITORY</value>
+              <!-- CS: Check if there is any NAS location for repository -->
+            </property>
+            <property name="IsMaster">
+              <value>false</value>
+            </property>
+
+            <!--  Optional property to indicate the default file repository domain.
+                       <property name="DefaultDomain">
+                           <value>TransmissionFiles</value>
+                       </property> -->
+          </service>
+          <service name="File Store Archive Service"/>
+          <service name="File Store Purge Service"/>
+          <service name="GBD File Repository Service">
+            <!--  Optional property to indicate a remote repository folder. -->
+            <property name="RepositoryLocation">
+              <value>/mnt/edifecs_system/GBD_REPOSITORY</value>
+              <!-- CS: Check if there is any NAS location for repository -->
+            </property>
+            <!--  Optional property to indicate the default file repository domain.
+                       <property name="DefaultDomain">
+                           <value>TransmissionFiles</value>
+                       </property> -->
+            <property name="IsMaster">
+              <value>false</value>
+            </property>
+
+          </service>
+          <service name="GBD File Repository Archive Service"/>
+          <service name="GBD File Repository Purge Service">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <!--Tpm Synchronization Service, maximum one per configuration
+          <service name="TpmSynchronizationService"/>-->
+          <service name="Attachment Purge Service">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <service name="DataExporter Service">
+            <property name="ThreadsCount">
+              <value>1</value>
+            </property>
+            <property name="JMS.Queue.DataExport">
+              <value>TM_DATAEXPORT</value>
+            </property>
+          </service>
+          <service name="Notification Scheduler Task"/>
+          <service name="Update Partner Status Service">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>
+          <service name="Business Rules Engine"/>
+          <!-- Datamart service to load business document datamart, maximum one per configuration.
+          <service name="DataMartBusinessDocumentService">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>-->
+          <!-- Datamart service to load Validation error datamart, maximum one per configuration.
+          <service name="DataMartValidationErrorService">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+          </service>-->
+          <service name="Item Delete Service"/>
+          <!-- GBD Retry Loader Service to load by matching External ID to Repository -->
+          <service name="GBD Retry Loader Service">
+            <property name="MaxRetryAttempts">
+              <value>10</value>
+            </property>
+            <property name="ActionInterval">
+              <value>300000</value>
+            </property>
+          </service>
+          <!-- TI Processor services required for HTR_BATCH mode -->
+          <service name="TrackingInfo Identification Service"/>
+          <service name="TrackingInfo Loader Service"/>
+          <service name="TrackingInfo Notification Service"/>
+          <service name="GBDInfo Notification Service"/>
+          <!--  <service name="Workflow Service">
+                        <property name="HTTPPort">
+                            <value>8086</value>
+                        </property>
+                        <property name="ContextPath">
+                            <value>taskmgmt</value>
+                        </property>
+                    </service>
+          <service name="Workflow Starting Service">
+                        <property name="ActionInterval">
+                            <value>10000</value>
+      -->
+          <!-- 10 seconds of action interval
+      -->
+          <!--        </property>
+                        <property name="BatchCount">
+                            <value>500</value>
+                        </property>
+                    </service>
+      -->
+          <service name="XEServer Drop File Service"/>
+          <service name="XEServer Drop File Service GBD">
+            <property name="Startup">
+              <value>Disabled</value>
+            </property>
+            <property name="TMInboundDir">
+              <value>${XESRoot}/profiles/TM_RIM_GBD/workspace/tm/gbd/inbound/batch</value>
+            </property>
+            <property name="TMOutboundDir">
+              <value>${XESRoot}/profiles/TM_RIM_GBD/workspace/tm/gbd/outbound/batch</value>
+            </property>
+          </service>
+          <service name="Guideline Service"/>
+          <service name="ETL Guideline Loader"/>
+        </services>
+      </application>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+        <profiles>
+          <profile httpPort="9383" httpsPort="9436" name="TM">
+            <property name="JMS.Queue.DataExport">
+              <value>TM_DATAEXPORT</value>
+            </property>
+            <property name="TMDataExport_DataStorage_JDBC_URL">
+              <value>jdbc:h2:file:${XESWorkspace}/DS/data</value>
+            </property>
+            <property name="TMDataExport_DataStorage_Expiration">
+              <value>1728000000</value>
+            </property>
+            <property name="TMDataExport_EmailFrom">
+              <value>dataexport@yourorg.com</value>
+            </property>
+          </profile>
+          <profile name="TMResubmission" template="TMResubmission">
+            <property name="JMS.Queue.Package.Resubmission">
+              <value>TM_ETL_PACKAGE_RESUBMISSION</value>
+            </property>
+            <property name="JMS.Queue.Package.Failed">
+              <value>TM_ETL_PACKAGE_FAILED</value>
+            </property>
+            <property name="JMS.Queue.Package.Invalid">
+              <value>TM_ETL_PACKAGE_INVALID</value>
+            </property>
+            <property name="EtlRecoveryFolder">
+              <value>/mnt/edifecs_system/etl-recovery</value>
+            </property>
+            <property name="MaxResubmissionRetryCount">
+              <value>5</value>
+            </property>
+          </profile>
+
+          <!--
+                    <profile name="TM_Archive">
+                        <property name="TM_Archive_context_path">
+                            <value>/archive</value>
+                        </property>
+                        <property name="TM_Archive_port">
+                            <value>9102</value>
+                        </property>
+                        <property name="TM_Archive_filestore_path">
+                            <value>${ECRootPath}/Data/TM/Archive/FileStore</value>
+                        </property>
+                        <property name="TM_Archive_es_embedded_path">
+                            <value>${ECRootPath}/Data/TM/Archive/Index</value>
+                        </property>
+                        <property name="TM_Archive_purge_conf_path">
+                            <value></value>
+                        </property>
+                        <property name="TM_Archive_purge_cron">
+                            <value>0 0 0 * * SUN</value>
+                        </property>
+                        <jvmArgs>
+                            -Xms2g
+                            -Xmx2g
+                            -Djava.awt.headless=true
+                            -Djava.net.preferIPv4Stack=true
+                            -XX:+UseParNewGC
+                            -XX:+UseConcMarkSweepGC
+                            -XX:CMSInitiatingOccupancyFraction=75
+                            -XX:+UseCMSInitiatingOccupancyOnly
+                        </jvmArgs>
+                    </profile>
+                    <profile name="TM_Archiver_HTR">
+                        <property name="TM_Archiver_etl_cron">
+                            <value>0 0 1 * * ?</value>
+                        </property>
+                        <property name="TM_Archiver_etl_endTime">
+                            <value>5:00 AM</value>
+                        </property>
+                        <jvmArgs>
+                            -Xms1g
+                            -Xmx6g
+                            -Xrs
+                            -XX:NewRatio=2
+                            -XX:SurvivorRatio=8
+                            -XX:+UseCompressedOops
+                            -XX:+UseParNewGC
+                            -XX:+UseConcMarkSweepGC
+                            -XX:CMSInitiatingOccupancyFraction=75
+                            -XX:SoftRefLRUPolicyMSPerMB=500
+                        </jvmArgs>
+                    </profile>
+                    -->
+          <profile name="TM_Search_Service">
+            <property name="TM_Search_Service_context_path">
+              <value>/search</value>
+            </property>
+            <property name="TM_Search_Service_port">
+              <value>9101</value>
+            </property>
+            <property name="TM_Search_Service_es_embedded_path">
+              <value>/mnt/edifecs_system/SearchRepo/Index</value>
+            </property>
+            <property name="TM_Search_Service_es_embedded_port">
+              <value>9300</value>
+            </property>
+            <jvmArgs>
+              -Xms3g
+              -Xmx3g
+              -Djava.awt.headless=true
+              -Djava.net.preferIPv4Stack=true
+              -XX:+UseParNewGC
+              -XX:+UseConcMarkSweepGC
+              -XX:CMSInitiatingOccupancyFraction=75
+              -XX:+UseCMSInitiatingOccupancyOnly
+            </jvmArgs>
+          </profile>
+
+          <!--   <profile name="TM_Search_IndexerHTR">
+                        <jvmArgs>
+                            -Xmx1g
+                        </jvmArgs>
+                    </profile>-->
+
+          <profile name="TM_Search_IndexerGBD">
+            <jvmArgs>
+              -Xmx3g
+            </jvmArgs>
+          </profile>
+          <!--
+                    <profile name="TM_Graph_DB">
+                        <property name="TM_Graph_DB_port">
+                            <value>2424</value>
+                        </property>
+                        <property name="TM_Graph_DB_database_path">
+                            <value>${ECRootPath}/Data/TM/Graph/databases/</value>
+                        </property>
+                        <property name="TM_Graph_DB_user">
+                            <value>tmuser</value>
+                        </property>
+                        <property name="TM_Graph_DB_password">
+                            <value>manager</value>
+                        </property>
+                        <property name="TM_Graph_DB_root_password">
+                            <value>manager</value>
+                        </property>
+                        <property name="TM_Graph_DB_backup_dir">
+                            <value>${ECRootPath}/Data/TM/Graph/backup</value>
+                        </property>
+      -->
+          <!-- (time format: HH:mm:ss) -->
+          <!--Note: In current version an automatic backup will be triggered at server start if the restart occurs later than "TM_Graph_DB_backup_firsttime"-->
+          <!--           <property name="TM_Graph_DB_backup_firsttime">
+                            <value>23:00:00</value>
+                        </property>
+                        <jvmArgs>
+                            -Xmx1G
+                            -server
+                            -XX:+AggressiveOpts
+                            -XX:CompileThreshold=200
+                        </jvmArgs>
+                    </profile>
+      -->
+        </profiles>
+      </application>
+
+      <application name="SDK" type="sdk"/>
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+    <!-- TrackingInfo Processing profile -->
+    <computer name="cernedfxtip151.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+      <application name="SDK" type="sdk"/>
+      <application name="XES" type="xes">
+        <property name="JMS.Queue.Package">
+          <value>TM_ETL_PACKAGE</value>
+        </property>
+        <property name="JMS.Queue.Event">
+          <value>TM_XES_EVENT</value>
+        </property>
+        <property name="JMS.Queue.TrackingInfo">
+          <value>TM_XES_TRACKINGINFO_IN</value>
+        </property>
+        <property name="MaxRuntimePackageSize">
+          <value>100000</value>
+        </property>
+        <!-- Indicates where XES / TM Route creates external ETL packages. -->
+        <property name="EtlPackageLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <!-- Indicates the shared location from where ETL services access external packages.
+                     The ETL service needs read/write permissions to this shared folder. -->
+        <property name="EtlPackageSharedLocation">
+          <value>/mnt/edifecs_system/tm-etl-package</value>
+        </property>
+        <property name="TM_Search_Service_es_backup_location">
+          <value>/mnt/edifecs_system/SearchRepo/BackUp</value>
+        </property>
+        <!-- Indicates the shared location from where Member Indexing access packages.-->
+        <property name="TMMI_PackageLocation">
+          <value>/mnt/edifecs_system/MemberIndexing/InboundPackages</value>
+        </property>
+        <profiles>
+          <profile name="TrackingInfoProcessor" template="TrackingInfoProcessor">
+            <!-- Optional property to indicate the JMS Queue for custom TrackingInfo input
+                      <property name="JMS.Queue.TrackingInfo.In">
+                            <value>TM_XES_TrackingInfo_CustomName</value>
+                        </property>
+           -->
+            <property name="JMS.Queue.TrackingInfo.Failed">
+              <value>TM_XES_TRACKINGINFO_FAILED</value>
+            </property>
+            <property name="JMS.Queue.TrackingInfo.Invalid">
+              <value>TM_XES_TRACKINGINFO_INVALID</value>
+            </property>
+          </profile>
+        </profiles>
+      </application>
+
+      <!-- The installer will configure the DB selector if it is a fresh install or if you reconfigure an installed TM.
+                 If you upgrade a previous version it will leave it untouched.
+                 If you don't want the TM installer to configure it comment the following line -->
+      <application name="DBSelector" type="xe-selector"/>
+    </computer>
+
+
+    <!-- Multiple Apache Tomcat ??????? -->
+    <computer name="cernedfxtmui151.cernerasp.com">
+      <RMI>
+        <RegistryPort>1090</RegistryPort>
+        <ServicePorts from="" to=""/>
+      </RMI>
+
+      <!-- The Web App will be installed in %TomcatHome%/webapps/[webcontext] folder.  -->
+      <application name="WebApp" type="webapp">
+        <appserver description="TOMCAT or WEBSPHERE" type="TOMCAT">
+          <property description="Indicates Tomcat location. Required property." name="location">
+            <value>/opt/tomcat/tomcat01</value>
+          </property>
+          <property description="Indicates the webapp context. Optional property." name="webcontext">
+            <value>tm</value>
+          </property>
+          <property description="Indicates the webserver port. Defaults to 80. Used for CAS configuration." name="port">
+            <value>8080</value>
+          </property>
+          <!-- CAS configuration to specify explicitly which URLs to use. No end slash.
+           If these properties are not defined then URLs will be computed using computer names from configuration
+           and port numbers of TM and CAS applications. -->
+          <property description="CAS server public URL. Used by the client: Browser->(GET)->(cas.public.url)" name="cas.public.url">
+            <value>http://cernedfxtmui151.cernerasp.com:8080/cas</value>
+          </property>
+          <property description="CAS server internal URL. Used by the application itself to validate the ticket. App->(HttpRequest)->(cas.internal.url)" name="cas.internal.url">
+            <value>http://localhost:8080/cas</value>
+          </property>
+          <property description="Current application URL. Used by the client: Browser->(GET)->(app.public.url)" name="app.public.url">
+            <value>http://cernedfxtmui151.cernerasp.com:8080/tm</value>
+        </property>
+      </appserver>
+    </application>
+    <application name="CasWebApp" type="cas-webapp">
+      <appserver description="TOMCAT or WEBSPHERE" type="TOMCAT">
+        <property description="Indicates Tomcat location. Required property." name="location">
+          <value>/opt/tomcat/tomcat01</value>
+        </property>
+        <property description="Indicates the webapp context" name="webcontext">
+          <value>cas</value>
+        </property>
+        <property description="Indicates the webserver port. Defaults to 80. Used for TM webapp configuration with CAS." name="port">
+          <value>8080</value>
+        </property>
+        <property description="Indicates whether the cookie should only be sent using a secure protocol. Set to false if CAS is not accessed via HTTPS." name="useSecureCookies">
+          <value>true</value>
+        </property>
+      </appserver>
+      <property description="Set the ldapConfigFile property only if LDAP authentication is required" name="ldapConfigFile">
+        <value>SSO/LDAP/ldap.properties</value>
+      </property>
+    </application>
+    </computer>
+
+
+    <!-- Databases configuration -->
+    <databases>
+      <property name="database.type">
+        <value>Oracle12c</value>
+      </property>
+      <!-- Number of shards to be configured for GBD repository. The value should be between 1 and 16. 1 by default. -->
+      <!--
+            <property name="gbd.shards.number">
+                <value>1</value>
+            </property>
+-->
+      <database name="gbd" type="gbd">
+        <property name="url">
+          <value>jdbc:oracle:thin:@(DESCRIPTION_LIST=(LOAD_BALANCE=off)(FAILOVER=on)(DESCRIPTION=(ENABLE=BROKEN)(ADDRESS=(PROTOCOL=TCP)(HOST=cernedfxdb151.cernerasp.com)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edfxqakc.world)))(DESCRIPTION=(ENABLE=BROKEN)(ADDRESS=(PROTOCOL=TCP)(HOST=cernedfxdb152.cernerasp.com)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edfxqakc.world))))</value>
+        </property>
+        <!--
+                <property name="master.url">
+                   <value>jdbc:jtds:sqlserver://localhost/master;sendStringParametersAsUnicode=false</value>
+                </property>
+-->
+        <property name="server">
+          <value>cernedfxdb152.cernerasp.com</value>
+        </property>
+        <property name="database">
+          <value>gbd</value>
+        </property>
+        <property name="username">
+          <value>gbd</value>
+        </property>
+        <property name="password" type="encrypted">
+          <value><%= @gbd_password %></value>
+        </property>
+        <!-- port is required for installation on Oracle or SQL Server named instance -->
+        <property name="port">
+          <value>1521</value>
+        </property>
+
+        <!-- instance is required for installation on Oracle or SQL Server named instance  -->
+
+        <!--  <property name="instance">
+          <value>edfxqals.world</value>
+        </property>-->
+      </database>
+
+      <database name="enablement">
+        <property name="url">
+          <value>jdbc:oracle:thin:@(DESCRIPTION_LIST=(LOAD_BALANCE=off)(FAILOVER=on)(DESCRIPTION=(ENABLE=BROKEN)(ADDRESS=(PROTOCOL=TCP)(HOST=cernedfxdb151.cernerasp.com)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edfxqakc.world)))(DESCRIPTION=(ENABLE=BROKEN)(ADDRESS=(PROTOCOL=TCP)(HOST=cernedfxdb152.cernerasp.com)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edfxqakc.world))))</value>
+        </property>
+        <property name="server">
+          <value>cernedfxdb152.cernerasp.com</value>
+        </property>
+        <property name="database">
+          <value>ECENABLEMENT</value>
+        </property>
+        <property name="username">
+          <value>ECENABLEMENT</value>
+        </property>
+        <property name="password" type="encrypted">
+          <value><%= @ecenablement_password %></value>
+        </property>
+        <!-- port is required for installation on Oracle or SQL Server named instance -->
+
+        <property name="port">
+          <value>1521</value>
+        </property>
+
+        <!-- instance is required for installation on Oracle or SQL Server named instance
+
+        <property name="instance">
+          <value>edfxqals.world</value>
+        </property>-->
+
+
+      </database>
+      <database name="active">
+
+        <property name="url">
+          <value>jdbc:oracle:thin:@(DESCRIPTION_LIST=(LOAD_BALANCE=off)(FAILOVER=on)(DESCRIPTION=(ENABLE=BROKEN)(ADDRESS=(PROTOCOL=TCP)(HOST=cernedfxdb151.cernerasp.com)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edfxqakc.world)))(DESCRIPTION=(ENABLE=BROKEN)(ADDRESS=(PROTOCOL=TCP)(HOST=cernedfxdb152.cernerasp.com)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edfxqakc.world))))</value>
+        </property>
+
+        <property name="server">
+          <value>cernedfxdb152.cernerasp.com</value>
+        </property>
+        <property name="database">
+          <value>ECACTIVE</value>
+        </property>
+        <property name="username">
+          <value>ECACTIVE</value>
+        </property>
+        <property name="password" type="encrypted">
+          <value><%= @ecactive_password %></value>
+        </property>
+        <!-- port is required for installation on Oracle or SQL Server named instance -->
+
+        <property name="port">
+          <value>1521</value>
+        </property>
+
+        <!-- instance is required for installation on Oracle or SQL Server named instance  -->
+
+        <!--<property name="instance">
+          <value>edfxqals.world</value>
+        </property>-->
+
+      </database>
+      <database name="TMDS" type="datastorage">
+        <property name="server">
+          <value>cernedfxdb152.cernerasp.com</value>
+        </property>
+        <property name="database">
+          <value>datastorage</value>
+        </property>
+        <property name="username">
+          <value>datastorage</value>
+        </property>
+        <property name="password" type="encrypted">
+          <value><%= @datastorage_password %></value>
+        </property>
+
+        <property name="url">
+          <value>jdbc:oracle:thin:@(DESCRIPTION_LIST=(LOAD_BALANCE=off)(FAILOVER=on)(DESCRIPTION=(ENABLE=BROKEN)(ADDRESS=(PROTOCOL=TCP)(HOST=cernedfxdb151.cernerasp.com)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edfxqakc.world)))(DESCRIPTION=(ENABLE=BROKEN)(ADDRESS=(PROTOCOL=TCP)(HOST=cernedfxdb152.cernerasp.com)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=edfxqakc.world))))</value>
+        </property>
+        <!-- port is required for installation on Oracle or SQL Server named instance -->
+        <property name="port">
+          <value>1521</value>
+        </property>
+
+        <!-- instance is required for installation on Oracle or SQL Server named instance
+
+        <property name="instance">
+          <value>edfxqals.world</value>
+        </property>-->
+
+
+      </database>
+      <!--  <database name="reporting">
+                <property name="server">
+                    <value>cernedfxdb152.cernerasp.com</value>
+                </property>
+                <property name="database">
+                    <value>reporting</value>
+               </property>
+                <property name="username">
+                    <value>reporting</value>
+                </property>
+                <property name="password">
+                    <value>manager</value>
+                </property> -->
+
+      <!-- port is required for installation on Oracle or SQL Server named instance -->
+
+      <!--      <property name="port">
+                    <value>1521</value>
+                </property>-->
+
+      <!-- instance is required for installation on Oracle or SQL Server named instance  -->
+
+      <!--       <property name="instance">
+                    <value>edfxqals.world</value>
+                </property>-->
+
+      <!--  </database> -->
+
+
+
+      <!-- Gdb Data replication. ???
+                tablesIncludePattern - regular expression to include tables into replication
+                tablesExcludePattern - regular expression to exclude tables from replication
+            -->
+
+      <gbdreplication>
+        <property name="tablesExcludePattern">
+          <value>.+data</value>
+        </property>
+        <property name="tablesExcludePattern">
+          <value>.+att</value>
+        </property>
+
+
+        <property name="tablesIncludePattern">
+          <value>.+</value>
+        </property>
+
+        <!--initial fast refresh interval - for Oracle only. (values in seconds) can be updated using maintenance scripts-->
+        <!--seconds 86400 for each 24h, 43200 - 12h, 21600 - 6h-->
+        <property name="refreshInterval">
+          <value>21600</value>
+        </property>
+
+        <!--Date when you want first refresh occur (date format: yyyy/dd/MM HH:mm:ss) -->
+        <property name="startDateTime">
+          <value/>
+        </property>
+      </gbdreplication>
+
+    </databases>
+
+    <!-- SMTP servers and email adresses. -->
+    <emails>
+      <smtpServerHostName>mail.cernerasp.com</smtpServerHostName>
+      <smtpServerSecureConnection>SSL/TLS</smtpServerSecureConnection>
+      <smtpServerPort>465</smtpServerPort>
+      <smtpUserName/>
+      <smtpPassword/>
+      <returnEmailAddress>qa-red-edifecs@cerner.com</returnEmailAddress>
+      <criticalErrorEmail>DL_RDCProductionSupport@cerner.com</criticalErrorEmail>
+      <monitorServiceEmailList>DL_RDCProductionSupport@cerner.com</monitorServiceEmailList>
+    </emails>
+
+    <!-- JMS configuration - IBM MQ on cernedfxmq151.cernerasp.com ????-->
+
+    <jms>
+      <jmsserver description="IBM WebSphere MQ (EdifecsContextFactory)">
+        <property name="ConnectionFactoryJndiName">
+          <value><%= @mq_manager %></value>
+        </property>
+        <property name="connection.factory.jndi.name">
+          <value><%= @mq_manager %></value>
+        </property>
+        <property name="ibm.channel">
+          <value>SYSTEM.ADMIN.SVRCONN</value>
+        </property>
+        <property name="ibm.connection.mode">
+          <value>TCPIP</value>
+        </property>
+        <property name="java.naming.provider.url">
+          <value><%= @mq_provider_url %></value>
+        </property>
+        <property name="ibm.queuemanager">
+          <value><%= @mq_manager %></value>
+        </property>
+        <property name="java.naming.factory.initial">
+          <value>com.edifecs.etools.xeserver.jms.factory.ContextFactory</value>
+        </property>
+        <!--<property name="java.naming.security.authentication">
+          <value>true</value>
+        </property>-->
+        <property name="username">
+          <value>mqm</value>
+        </property>
+        <property name="password">
+          <value><%= @mq_password %></value>
+        </property>
+      </jmsserver>
+    </jms>
+    <!--
+       <tableau-server>
+            <property name="tdeLocation">
+                <value>C:/Program Files/Tableau/Temp</value>
+            </property>
+            <property name="host">
+                <value>cernedfxtbl001.northamerica.cerner.net</value>
+            </property>
+            <property name="port">
+                <value>8000</value>
+            </property>
+            <property name="publisherUsername">
+                <value>tm_publisher</value>
+            </property>
+            <property name="publisherPassword">
+                <value>edifecs</value>
+            </property>
+            <property name="viewerUsername">
+                <value>tm_viewer</value>
+            </property>
+            <property name="viewerPassword">
+                <value>edifecs</value>
+            </property>
+            <property name="siteID">
+                <value>TransactionManagement</value>
+            </property>
+            <property name="project">
+                <value>TMDashboards</value>
+            </property>
+            <property name="ssl">
+                <value>false</value>
+            </property>
+        </tableau-server>
+        -->
+  </configuration>
+</config>

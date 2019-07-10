@@ -1,0 +1,7 @@
+#!/bin/bash
+. ~/.bash_profile
+$EAMRoot/Server/bin/startEAMServer.sh
+<% Dir.chdir('/opt/Edifecs/XEServer/profiles/') %>
+<% Dir.glob('*').select {|f| File.directory? f}.each() do |profile_dir| %>
+  <%= 'echo | /opt/Edifecs/XEServer/bin/start.sh ' + profile_dir %>
+<% end %>

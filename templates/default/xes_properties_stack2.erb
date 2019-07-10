@@ -1,0 +1,19 @@
+BatchTrackingServiceURL=<%= node['edifecs']['xes_server']['properties']['batch_tracking_service_url'] %>
+QueueUserName=mqm
+Authentication_Token=<%= @oauth_bearer_token %>
+QueueProviderUrl=<%= @queueproviderurl %>
+QueueManager=<%= @mq_manager %>
+QueuePassword=<%= @mq_password %>
+QueueChannel=SYSTEM.ADMIN.SVRCONN
+ScriptLocation=/opt/Edifecs/ArtifactsRepository/HDXTS_artifacts/scripts
+GroovyLocation=/opt/Edifecs/ArtifactsRepository/HDXTS_artifacts/groovy
+MainframeClmFtpPath=<%= "/local/hdx/" + node['edifecs']['xes_server']['properties']['mainframe']['ftp_path'] + "/0/data/claims/outbound/edifecs" %>
+MainframeMbxFtpPath=<%= "/local/hdx/" + node['edifecs']['xes_server']['properties']['mainframe']['ftp_path'] + "/0/data/mailbox/edifecs" %>
+MainframeEnvironment=<%= node['edifecs']['xes_server']['properties']['mainframe']['environment'] %>
+MainframeDb2Url=<%= "jdbc\\:db2\\://" + node['edifecs']['xes_server']['properties']['mainframe']['db_dns'] +":" + node['edifecs']['xes_server']['properties']['mainframe']['db_portnumber'] + "/NETSMSD2" + node['edifecs']['xes_server']['properties']['mainframe']['db_url'] %>
+MainframeDb2UserName=<%= @db2_username %>
+MainframeDb2Password=<%= @db2_password %>
+MainframeSftpHost=d168.asp.cernerworks.com
+MainframeSftpPort=22
+MainframeSftpUserName=<%= @sftp_username %>
+MainframeSftpPassword=<%= @sftp_password %>
